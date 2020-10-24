@@ -226,18 +226,34 @@ double Matrix::determinant(int n,double mat[10][10])
     return d;
 }
 
-Matrix Matrix::additiveInv() {
-    Matrix m1(c,r);
-    Matrix out(c,r);
-    for(int i=0;i<m1.r;i++)
-    {
-        for(int j=0;j<m1.c;j++)
-        {
-            out.m[i][j] = (-1)*m1.m[i][j];
+int Matrix::isIdempotent(){
+	Matrix mat(r,c);
+	Matrix result(r,c);
+	int i, j, k,f=0;
+        for (i = 0; i < r; i++) {
+            for (j = 0; j < r; j++) {
+                result.m[i][j] = 0;
+                for (k = 0; k < r; k++)
+                    result.m[i][j] += mat.m[i][k]
+                                 * mat.m[k][j];
+            }
         }
-    }
-    return out;
+	for (i = 0; i < r; i++) {
+            for (j = 0; j < r;) {
+		    if(result.m[i][j] == mat.m[i][j])
+			    j++;
+		    else{
+			    f = 1;
+			    break;
+		    }
+	    }
+	}
+	if(f==0)
+		return 1;  //indicates that the matrix is idempotent
+	else
+		return 0;  //indicates that the matrix is not idempotent
 }
+	
 
 int main()
 {
