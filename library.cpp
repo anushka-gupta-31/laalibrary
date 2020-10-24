@@ -148,14 +148,14 @@ int *Matrix::dimensions() {
 
 }
 
-int *Matrix::gaussElimination()
+float *Matrix::gaussElimination()
 {
-	int x_arr[100];
+	float x_arr[100];
 	int *ptr=x_arr;
 	for(int i=0;i<c;i++)
 		for(int j=i+1;j<r;j++)
 		{
-			int x=m[j][i]/m[i][i];
+			x=m[j][i]/m[i][i];
 			*ptr=x;
 			ptr++;
 			for(int k=0;k<c;k++)
@@ -304,25 +304,6 @@ Matrix Matrix::additiveInv() {
     return out;
 }
 
-#<<<<<<< main
-#int Matrix::isInvertible()
-#{
-#    Matrix m2(r,c);
-#    float m3[10][10];
-#    m3[10][10]= m2.m[10][10];
-#    float d1=determinant(r,m3);
-#    if(isSquare() == 1)
-#    {
-#        if(d1 != 0)
-#            return 1;
-#    }
-#    else
-#        return 0;
-#}
-
-
-#=======
-#>>>>>>> main
 int main()
 {
 	Matrix m(4,4);
