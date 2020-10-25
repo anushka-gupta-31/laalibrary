@@ -245,6 +245,27 @@ double Matrix::determinant(int n,double mat[10][10])
     return d;
 }
 
+int *Matrix::graph(){
+	Matrix mat(r,c);
+	int yes_or_no,edges=0;
+	cout<<"Does the matrix represent a graph? Enter 0 if your answer is NO and 1 if your answer is YES : " ;
+	cin >> yes_or_no;
+	if(yes_or_no == 1){
+		cout << "The number of vertices is : " << r+1;
+		for(int i=0;i<r;i++){
+			for(int j=0;j<c;j++){
+				if(mat[i][j]==1)
+					edges++;
+			}
+		}
+		cout << "The number of edges is : " << edges;
+	}
+	else
+		cout << "NULL";
+	return 0;
+}
+
+
 Matrix *Matrix::LUdecomposition(){
 	 Matrix upper(r,c);
          Matrix lower(r,c);
